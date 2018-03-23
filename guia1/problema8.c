@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* Ocupamos un if para todos los inputs posibles. */
+
 int main (){
 	int num;
 	printf("Ingrese un numero entre 1 y 10:\n");

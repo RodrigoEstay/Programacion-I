@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Revisamos en cada numero del 2 al 10 si es divisor, si lo es, lo mimprime. */
+
 int main (){
 	int num;
-	printf("Ingrese un num:\n");
+	printf("Ingrese un numero:\n");
 	scanf("%d", &num);
 	printf("Divisores entre 2 y 10:\n");
 	if(num%2==0)

@@ -1,3 +1,5 @@
-duda en problema 6 si es que se consideran input negativo o ceros.
-que pasa en el problema 7 (ciclos?)
-acm.timus.ru
+En problema 7 se ordena en la forma que se ingreso o de mayor a menor?.
+
+
+
+acm.timus.ru	247803OV

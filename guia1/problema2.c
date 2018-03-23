@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Ya que son solo 2 numeros, existen solo 2 casos de cual sea mayor. */
+
 int main (){
 	int num1, num2;
 	printf("Ingrese dos numeros enteros:\n");

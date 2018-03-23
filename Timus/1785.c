@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Solo usamos un if para cada caso dado por la tabla. */
+
 int main (){
 	int n;
 	scanf("%d", &n);

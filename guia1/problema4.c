@@ -1,6 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* Ocupamos la variable "temp" para almacenar el numero que va a ser el primero
+en cambiarse, asi al cambiarlo por el otro numero no se pierde el dato guardado
+por el primero. consiguiendo un swap exitoso. */
+
 int main (){
 	int num1, num2, temp;
 	printf("Ingrese 2 numeros:\n");
