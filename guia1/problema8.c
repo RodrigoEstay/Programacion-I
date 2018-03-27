@@ -1,7 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-/* Ocupamos un if para todos los inputs posibles. */
+/* Ocupamos un switch, asi saltamos entre casos e imprimimos el numero de
+de veces indicado. */
 
 int main (){
 	int num;
@@ -11,25 +12,27 @@ int main (){
 		printf("ERROR NUMERO INGRESADO INVALIDO, PROGRAMA TERMINADO.\n");
 		return 0;
 	}
-	else if(num==10)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==9)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==8)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==7)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==6)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==5)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==4)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==3)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==2)
-		printf("paranguacutilimicuaro\nparanguacutilimicuaro\n");
-	else if(num==1)
+	switch(num){
+		case 10:
 		printf("paranguacutilimicuaro\n");
+		case 9:
+		printf("paranguacutilimicuaro\n");
+		case 8:
+		printf("paranguacutilimicuaro\n");
+		case 7:
+		printf("paranguacutilimicuaro\n");
+		case 6:
+		printf("paranguacutilimicuaro\n");
+		case 5:
+		printf("paranguacutilimicuaro\n");
+		case 4:
+		printf("paranguacutilimicuaro\n");
+		case 3:
+		printf("paranguacutilimicuaro\n");
+		case 2:
+		printf("paranguacutilimicuaro\n");
+		case 1:
+		printf("paranguacutilimicuaro\n");
+	}
 	return 0;
 }

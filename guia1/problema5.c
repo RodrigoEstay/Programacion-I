@@ -10,19 +10,19 @@ int main (){
 	scanf("%d%d%d", &num1, &num2, &num3);
 	if (num1<0 && num2<0 && num3<0)
 		printf("todos\n");
-	else if (num1>0 && num2>0 && num3>0)
+	else if (num1>=0 && num2>=0 && num3>=0)
 		printf("ninguno\n");
-	else if (num1>0 && num2<0 && num3<0)
+	else if (num1>=0 && num2<0 && num3<0)
 		printf("al menos dos\n");
-	else if (num1<0 && num2>0 && num3<0)
+	else if (num1<0 && num2>=0 && num3<0)
 		printf("al menos dos\n");
-	else if (num1<0 && num2<0 && num3>0)
+	else if (num1<0 && num2<0 && num3>=0)
 		printf("al menos dos\n");
-	else if (num1>0 && num2>0 && num3<0)
+	else if (num1>=0 && num2>=0 && num3<0)
 		printf("al menos uno\n");
-	else if (num1<0 && num2>0 && num3>0)
+	else if (num1<0 && num2>=0 && num3>=0)
 		printf("al menos uno\n");
-	else if (num1>0 && num2<0 && num3>0)
+	else if (num1>=0 && num2<0 && num3>=0)
 		printf("al menos uno\n");
 	else
 		printf("ERROR\n");
