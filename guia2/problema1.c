@@ -6,11 +6,11 @@ int main (){
 	/* El arreglo "prec" almacenara los ultimos dos numeros de la sucesion,
 	y tambien introducimos los primeros dos terminos de la sucesion.*/
 
-	int n, prec[2]={0,1}, sum=0, i;
-	do{ // Aqui seguiremos escaneando "n" hasta que introduzcan uno positivo.
-		printf("Introduzca un numero POSITIVO:\n");
+	int n, prec[2]={1,1}, sum=0, i;
+	do{ // Aqui seguiremos escaneando "n" hasta que introduzcan uno positivo y menor a 47.
+		printf("Introduzca un numero POSITIVO (maximo 46 debido a overflow):\n");
 		scanf("%d", &n);
-	}while(n<=0);
+	}while(n<=0 || n>46);
 	if(n==1){
 		printf("El primer termino de la sucesion de Fibonacci es:\n");
 	}
