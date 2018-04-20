@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+/* Programa hecho sin ayuda. */
+
 int main(){
 	int i, n, comp=0;
 	printf("Ingrese un numero entero:\n");

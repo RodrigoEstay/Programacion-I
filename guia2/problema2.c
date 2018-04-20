@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+/* Programa hecho sin ayuda. */
+
 int main(){
 	int n, i;
 	do{ //Escaneamos el input hasta que se introduzca un "n" positivo o igual a 0.

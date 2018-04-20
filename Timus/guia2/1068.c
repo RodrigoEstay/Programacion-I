@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* Programa hecho sin ayuda. */
+
 int main (){
 	int n, neg=0, sum=0, i;
 	scanf("%d", &n);

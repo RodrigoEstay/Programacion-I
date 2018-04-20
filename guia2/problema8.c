@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho sin ayuda. */
+
 int main (){
 	int matrix[4][4], i, j, subDet1, subDet2, subDet3, subDet4;
 	printf("Introduzca los 16 datos de la matriz 4x4:\n");

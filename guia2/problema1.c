@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho sin ayuda. */
+
 int main (){
 
 	/* El arreglo "prec" almacenara los ultimos dos numeros de la sucesion,

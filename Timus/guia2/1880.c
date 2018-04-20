@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho sin ayuda. */
+
 int main (){
 	int n[3], i, j, k, eigenvalues=0;
 	scanf("%d", &n[0]);

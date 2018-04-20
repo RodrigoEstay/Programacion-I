@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho sin ayuda. */
+
 int main (){
 	int n, i, j, k;
 	printf("Ingrese un numero MAYOR QUE 2:\n");

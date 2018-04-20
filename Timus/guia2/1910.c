@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+/* Programa hecho sin ayuda. */
+
 int main (){
 	int n, i, maxMagic=0, maxSection; // "maxMagic" es 0 para que no tome basura en la linea 11.
 	scanf("%d", &n);
