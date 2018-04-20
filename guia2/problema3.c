@@ -47,7 +47,8 @@ int main(){
 	promedio de los dos elementos del medio, en caso de que "n" sea impar solo habra un
 	elemento en el medio, y ese sera la mediana. */
 
-	printf("El menor:\t%d\nEl mayor:\t%d\nElpromedio:\t%d\nLa mediana:\t%d\n", data[n-1], data[0], sum/n, (n%2==0)?(data[n/2]+data[n/2-1])/2:data[n/2]);
+	printf("El menor:\t%d\nEl mayor:\t%d\nEl promedio:\t%d\nLa mediana:\t%d\n", data[n-1], 
+		data[0], sum/n, (n%2==0)?(data[n/2]+data[n/2-1])/2:data[n/2]);
 	printf("NOTA: Los valores anteriores estan truncados a la unidad.\n");
 	return 0;
 }
