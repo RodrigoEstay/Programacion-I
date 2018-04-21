@@ -6,10 +6,11 @@
 
 int main(){
 	int n, i;
-	do{ //Escaneamos el input hasta que se introduzca un "n" positivo o igual a 0.
-		printf("Ingrese un numero que NO SEA NEGATIVO:\n");
+	do{ // Escaneamos el input hasta que se introduzca un "n" positivo o igual a 0 y menor a 32 para
+		// que no se produzca un overflow.
+		printf("Ingrese un numero que NO SEA NEGATIVO y menor a 32 (debido a overflow):\n");
 		scanf("%d", &n);
-	}while(n<0);
+	}while(n<0 || n>31);
 	if(n==0){
 		printf("No puefo imprimir las 0 primeras potencias de 2.\n");
 		return 0;
@@ -21,7 +22,7 @@ int main(){
 		printf("Las %d primeras potencias de 2:\n", n);
 	}
 	for(i=0;i<n;++i){ // Imprimimos las "n" primeras potencias de 2 con la funcion pow.
-		printf("%lld ", (long long int)pow(2,i)); //long long int para que tolere hasta un n=63.
+		printf("%d ", (int)pow(2,i)); // Hacemos casting a int.
 		}
 	printf("\n");
 	return 0;
