@@ -23,7 +23,7 @@ int main(){
 	}
 	for(i=0;i<n;++i){ // Imprimimos las "n" primeras potencias de 2 con la funcion pow.
 		printf("%d ", (int)pow(2,i)); // Hacemos casting a int.
-		}
+	}
 	printf("\n");
 	return 0;
 }
