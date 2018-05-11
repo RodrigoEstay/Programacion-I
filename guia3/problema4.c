@@ -1,6 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho sin ayuda. */
+
+/* Revisamos en cada intervalo (el de minusculas, mayusculas
+y numeros) si se encuentra en alguno de esos intervalos, imprimimos
+de cual se trata. */ 
+
 int main(){
 	char c;
 	printf("Ingrese un caracter:\n");
