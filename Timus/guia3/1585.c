@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* Programa hecho sin ayuda. */
+
+/* Primero inicializamos un arreglo con el conteo de cada tipo de pinguino, luego dos arreglos, 
+uno almacenara siempre la palabra "penguin", y el otro el tipo del pinguino para cada caso, y el
+ultimo arreglo almacena los 3 nombres de los tipos de penguinos.
+Luego para los "n" casos, escaneamos dos strings, el que nos interesa es el tipo, asi que lo
+comparamos con cada tipo, si es igual a alguno aumentamos su respectivo contador.
+Luego buscamos el valor maximo y lo imprimimos. */
+
 int main(){
 	int n, countType[3]={0,0,0};
 	scanf("%d", &n);
