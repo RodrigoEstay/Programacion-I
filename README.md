@@ -1,3 +1,3 @@
-En la guia 2, debo confirmar que el n es mayor que 0 en todos los ejercicios que pida n numeros?
+En la Guia 3 confirmar si es que el ejercicio 10 se trata de un string o una linea de texto.
 
 acm.timus.ru
