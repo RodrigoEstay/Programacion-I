@@ -3,11 +3,8 @@
 #include <string.h>
 
 int main(){
-	char str[100]="hola", s[2]="+", *t;
-	t=strtok(str, s);
-	do{
-		printf("%s\n", t);
-		t=strtok(NULL,s);
-	}while(t!=NULL);
+	double a, b;
+	scanf("%lf%lf", &a, &b);
+	printf("%d %lf\n", (a-(int)a)==0, b-(int)b);
 	return 0;
 }
