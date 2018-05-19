@@ -11,7 +11,7 @@ pero en vez de restar la diferencia la sumamos.
 Notamos que este programa solo funciona con palabras sin espacio en blanco
 si se quiere que funcione con espacios en blanco cambiamos el %s de la linea
 20 por un %[^EOF], que escanea hasta el final del archivo. (pero no se si se
- puede usar)*/
+puede usar) */
 
 int main(){
 	char word[1000];
