@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho sin ayuda. */
+
 void ordenParcial(int* v1, int n, int cant);
+
+/* En main solo esta hecho para probar si la funcion funciona como se espera. */
 
 int main(){
 	int n;
@@ -22,6 +26,10 @@ int main(){
 	printf("\n");
 	return 0;
 }
+
+/* Primero ordenamos el vector de mayor a menor, luego para los primeros "cant" valores del vector,
+inviertiremos sus posiciones, asi haciendo que los primeros "cant" valores sean los mayores del arreglo
+y al invertirlos conseguimos que esten ordenados en orden ascendiente (de menor a mayor). */
 
 void ordenParcial(int* v1, int n, int cant){
 	int i, j, temp;

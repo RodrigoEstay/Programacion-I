@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Programa hecho sin ayuda. */
+
 long long mcd(long long n1, long long n2);
 
 int main(){
@@ -20,6 +22,12 @@ int main(){
 	}
 	return 0;
 }
+
+/* Primero hacemos que "n1" siempre sea el menor. Luego buscamos un numero menor a "n1" tal que
+cumpla que "n1" y "n2" sean divisibles por este numero, luego retornamos dicho numero.
+Notar que se ocupo un while en vez de un for, ya que asi evitamos de que cuando "i" llegue
+a 0 se realizen los modulos "n1%i" y "n2%i" lo cual dividiria por 0, lo cual mataria el
+programa. */
 
 long long mcd(long long n1, long long n2){
 	long long temp, i;
