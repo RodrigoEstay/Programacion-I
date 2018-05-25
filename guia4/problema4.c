@@ -7,12 +7,16 @@ int main(){
 	long long n1, n2, m;
 	printf("Ingrese dos numeros:\n");
 	scanf("%lld%lld", &n1, &n2);
+	while(n1==0 || n2==0){
+		printf("Entrada invalida. Porfavor compruebe que los numeros sean enteros distintos de 0.\n");
+		scanf("%lld%lld", &n1, &n2);
+	}
 	m=mcd(n1, n2);
 	if(m){
-		printf("El minimo comun divisor es: %lld\n", m);
+		printf("El maximo comun divisor es: %lld\n", m);
 	}
 	else{
-		printf("No existe minimo comun divisor\n");
+		printf("No tienen maximo comun divisor.\n");
 	}
 	return 0;
 }
