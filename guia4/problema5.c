@@ -4,6 +4,7 @@
 
 /* Programa hecho sin ayuda. */
 
+int programCountinue();
 double operacion(char op, double v1, double v2);
 long long mcm(long long n1, long long n2);
 long long mcd(long long n1, long long n2);
@@ -54,7 +55,14 @@ int main(){
 						scanf("%c %lf %lf", &op, &v1, &v2);
 					}
 					printf("%.3lf %c %.3lf = %.3lf\n", v1, op, v2, operacion(op,v1,v2));
-					printf("\nPresione una tecla para continuar...\n");
+					if(programCountinue()==1){
+						break;
+					}
+					else{
+						system("clear");
+						return 0;
+					}
+					system("clear");
 					break;
 				}
 				else if(user2==2){	
@@ -85,7 +93,14 @@ int main(){
 						scanf("%lld%lld", &n1, &n2);
 					}
 					printf("El minimo comun multiplo de %lld y %lld es %lld\n", n1, n2, mcm(n1,n2));
-					printf("\nPresione una tecla para continuar...\n");
+					if(programCountinue()==1){
+						break;
+					}
+					else{
+						system("clear");
+						return 0;
+					}
+					system("clear");
 					break;
 				}
 				else if(user2==2){	
@@ -116,7 +131,14 @@ int main(){
 						scanf("%lld%lld", &n1, &n2);
 					}
 					printf("El maximo comun divisor de %lld y %lld es %lld\n", n1, n2, mcd(n1,n2));
-					printf("\nPresione una tecla para continuar...\n");
+					if(programCountinue()==1){
+						break;
+					}
+					else{
+						system("clear");
+						return 0;
+					}
+					system("clear");
 					break;
 				}
 				else if(user2==2){	
@@ -129,13 +151,30 @@ int main(){
 		}
 		// Si se escoje salir, salimos del while, lo cual nos lleva al return 0; 
 		else if(!strcmp(user1,"salir")){
-			break;
+			system("clear");
+			return 0;
 		}
 		else{ // Para entrada invalida, limpiamos la pantalla y el while imprimira el submenu denuevo.
 			system("clear");
 		}
 	}
-	return 0;
+}
+
+/* Funcion nueva creada con el objetivo de comprobar si el usuario desea seguir utilizando el
+programa despues de terminar de usar algunas de sus funciones. */
+
+int programCountinue(){
+	int des;
+	printf("\nDesea continuar usando el programa?\n1- Si\n2- No\n");
+	while(1){
+		scanf("%d", &des);
+		if(des==1 || des==2){
+			return des;
+		}
+		else{
+			printf("Entrada invalida, intente denuevo...\n");
+		}
+	}
 }
 
 /* Estas son las funciones explicadas previamente. */
