@@ -36,6 +36,11 @@ int main(){
 			}
 		}
 	}
+
+	for (int i = 0; i < n; ++i)
+	{
+		printf("%d ",data[i] );
+	}printf("\n");
 	for(i=0, sum=0;i<n;++i){
 		sum+=data[i]; // Calculamos la suma de todos los datos para luego sacar el promedio.
 	}
