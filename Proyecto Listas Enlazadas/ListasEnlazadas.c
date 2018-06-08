@@ -33,7 +33,7 @@ void presioneEnterParaContinuar();
 
 int main(){
 	leerArchivo();
-	ordenar();
+	//ordenar();
 	int user;
 	while(1){
 		system("clear");
@@ -83,7 +83,7 @@ int main(){
 			printf("Peleas perdidas?\n");
 			scanf("%d", &pel.perdidas);
 			agregar(pel);
-			ordenar();
+			//ordenar();
 		}
 		else if(user==2){
 			
@@ -122,13 +122,30 @@ int largo(){
 }
 
 void agregar(struct peleador pel){
+	struct nodo *prev=(struct nodo*)malloc(sizeof(struct nodo));
+	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
 	struct nodo *temp=(struct nodo*)malloc(sizeof(struct nodo));
-	if(temp==NULL){
+	if(temp==NULL || current==NULL){
 		printf("ERROR al reservar memoria, intente denuevo.\n");
 	}
+	current=head;
+	printf("SEP\n");
+	while(current!=NULL){
+		if(current->peleador.peso>pel.peso){
+			break;
+		}
+		prev=current;
+		current=current->next;
+	}
 	temp->peleador=pel;
-	temp->next=head;
-	head=temp;
+	if(current==head){
+		temp->next=head;
+		head=temp;
+	}
+	else{
+		temp->next=current;
+		prev->next=temp;
+	}
 }
 
 void desplegarLista(){
@@ -180,13 +197,14 @@ void ordenar(){
 }
 
 void leerArchivo(){
-	FILE *archivo;
+	FILE *archivo=NULL;
 	archivo=fopen("datos.txt", "r");
 	if(archivo!=NULL){
 		int num;
 		char saltoDeLinea;
 		struct peleador pel;
 		fscanf(archivo, "%d", &num);
+		printf("%d\n", num);
 		if(num==0){
 			return;
 		}
@@ -202,7 +220,7 @@ void leerArchivo(){
 
 void guardarArchivo(){
 	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
-	FILE *archivo;
+	FILE *archivo=NULL;
 	archivo=fopen("datos.txt", "w");
 	if(current==NULL){
 		printf("ERROR al reservar memoria.\n");
