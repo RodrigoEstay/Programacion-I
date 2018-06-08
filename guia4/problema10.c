@@ -3,7 +3,7 @@
 
 void modificarMatriz(int n, int m, int mat1[n][m]);
 
-/* main es paa probar la funcion. */
+/* main es para probar la funcion. */
 
 int main(){
 	int n, m, i, j;
