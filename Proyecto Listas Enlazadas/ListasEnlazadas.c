@@ -3,7 +3,7 @@
 
 // TODO: ORDENAMIENTO NO FUNCIONA (o almenos eso parece, podria ser error de lectura del archivo tambien).
 // TODO: Los informes de errores de alocacion de memoria y de abrir archivos, de momento imprimen un mensaje
-//		que se borra instantaneamente o simplemente no pasa nada, arreglar esto, que los errores se hagan notar.
+//		que se borra instantaneamente o simplemente no pasa nada.
 
 struct peleador{
 	char nombre[200];
