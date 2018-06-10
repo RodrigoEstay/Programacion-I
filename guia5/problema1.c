@@ -18,6 +18,7 @@ typedef struct Jugador{
 	double velocidad;
 	double dureza;
 	double resistencia;
+	double reflejos;
 }Jugador;
 
 typedef struct Staff{
@@ -147,13 +148,13 @@ Jugador* crearJugadores(int numArq, int numDef, int numCent, int numDel){
 		}
 		generarNombre(nombre, rand()%30, rand()%30);
 		strcpy((jugadores+i)->nombre, nombre);
-		(jugador+i)->edad=rand()%40;
-		(jugador+i)->regate=(double)rand()/10000;
-		(jugador+i)->defensa=(double)rand()/10000;
-		(jugador+i)->reflejos=(double)rand()/10000;
-		(jugador+i)->velocidad=(double)rand()/10000;
-		(jugador+i)->dureza=(double)rand()/10000;
-		(jugador+i)->resistencia=(double)rand()/10000;
+		(jugadores+i)->edad=rand()%40;
+		(jugadores+i)->regate=(double)rand()/10000;
+		(jugadores+i)->defensa=(double)rand()/10000;
+		(jugadores+i)->reflejos=(double)rand()/10000;
+		(jugadores+i)->velocidad=(double)rand()/10000;
+		(jugadores+i)->dureza=(double)rand()/10000;
+		(jugadores+i)->resistencia=(double)rand()/10000;
 	}
 	return jugadores;
 }
