@@ -1,9 +1,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-// TODO: ORDENAMIENTO NO FUNCIONA (o almenos eso parece, podria ser error de lectura del archivo tambien).
-// TODO: Los informes de errores de alocacion de memoria y de abrir archivos, de momento imprimen un mensaje
-//		que se borra instantaneamente o simplemente no pasa nada.
+// Falta:	-Poner que se libere las memorias de los punteros de la lista.
+//			-Liberar la memoria de los punteros temporales de las funciones.
+//			-Una funcion para eliminar un peleador de la lista.
+// 			-Que se vea mas bonito cuando se despliegue la lista.
+//			-Alguna funcion para editar la informacion de un elemento especifico de la lista
+//			(Podria hacerse con algo como ID temporales o algo para identificar los peleadores, 
+//			ya que por el nombre no es muy conveniente).
+//			-En la funciones de desplegar por categoria de peso y por estilos, yo creo que solo
+//			hay que agregar unos cuantos if. Se podrian hacer funciones nuevas o se podria modificar
+//			la funcion actual para desplegar la lista.
+// 			-Revisar la funcion para agregar elementos, ya que tiene pinta de que algo puede tener malo.
 
 struct peleador{
 	char nombre[200];
@@ -20,22 +28,23 @@ struct nodo{
 	struct nodo *next;
 };
 
+// Declaramos la cabeza y el nodo a analizar de manera global, ya que se ocupan
+// por muchas funciones.
 struct nodo *head = NULL;
 struct nodo *current = NULL;
 
+// Enunciamos las funciones que se encuentran despues del main.
 int largo();
 void agregar(struct peleador pel);
 void desplegarLista();
-void ordenar();
 void leerArchivo();
 void guardarArchivo();
 void presioneEnterParaContinuar();
 
 int main(){
 	leerArchivo();
-	//ordenar();
 	int user;
-	while(1){
+	while(1){// Este while es para que se siga desplegando el menu despues de realizar una accion.
 		system("clear");
 		printf("Seleccione la operacion a realizar:\n"
 			"[1] Agregar peleador.\n"
@@ -46,7 +55,7 @@ int main(){
 			"[6] Editar informacion de estilos.\n"
 			"[7] Salir.\n");
 		scanf("%d", &user);
-		while(user>7 && user<1){
+		while(user>7 && user<1){ // Validamos la entrada.
 			system("clear");
 			printf("Opcion invalida, vuelva a seleccionar:\n"
 				"[1] Agregar peleador.\n"
@@ -58,7 +67,7 @@ int main(){
 				"[7] Salir.\n");
 			scanf("%d", &user);
 		}
-		if(user==1){
+		if(user==1){ // Escaneamos los datos de un peleador, para luego agregarlo a la lista.
 			getchar();
 			struct peleador pel;
 			system("clear");
@@ -83,12 +92,11 @@ int main(){
 			printf("Peleas perdidas?\n");
 			scanf("%d", &pel.perdidas);
 			agregar(pel);
-			//ordenar();
 		}
 		else if(user==2){
 			
 		}
-		else if(user==3){
+		else if(user==3){ // Simplemente llamamos las funciones correspondientes.
 			system("clear");
 			desplegarLista();
 			presioneEnterParaContinuar();
@@ -102,15 +110,18 @@ int main(){
 		else if(user==6){
 			
 		}
-		else if(user==7){
+		else if(user==7){ // Salimos del while para dejar de desplegar el menu.
 			system("clear");
 			break;
 		}
 	}
+	// Al seleccionarse que se desea salir del programa, guardamos la informacion en un archivo
+	// y luego cerramos el programa.
 	guardarArchivo();
 	return 0;
 }
 
+// Calcula cuantos peleadores hay guardados hasta el momento.
 int largo(){
 	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
 	current=head;
@@ -121,6 +132,7 @@ int largo(){
 	return len;
 }
 
+// Se agrega un nuevo peleador de tal manera que se mantenga el orden por peso.
 void agregar(struct peleador pel){
 	struct nodo *prev=(struct nodo*)malloc(sizeof(struct nodo));
 	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
@@ -148,6 +160,7 @@ void agregar(struct peleador pel){
 	}
 }
 
+// Se despliega la lista, los if son para traducir desde entero a palabra el estilo del peleador.
 void desplegarLista(){
 	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
 	if(current==NULL){
@@ -173,29 +186,7 @@ void desplegarLista(){
 	}
 }
 
-void ordenar(){
-	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
-	struct nodo *next=(struct nodo*)malloc(sizeof(struct nodo));
-	struct peleador temp;
-	if(current==NULL || next==NULL){
-		printf("ERROR al reservar memoria.\n");
-	}
-	int i, j, len=largo();
-	for(i=1;i<len;++i){
-		current=head;
-		next=head->next;
-		for(j=i+1;j<len;++j){
-			if(current->peleador.peso>next->peleador.peso){
-				temp=current->peleador;
-				current->peleador=next->peleador;
-				next->peleador=temp;
-			}
-			current=current->next;
-			next=next->next;
-		}
-	}
-}
-
+// Esta funcion lee un archivo de una manera especifica, la cual es igual a la manera en la que se guarda.
 void leerArchivo(){
 	FILE *archivo=NULL;
 	archivo=fopen("datos.txt", "r");
@@ -218,6 +209,7 @@ void leerArchivo(){
 	fclose(archivo);
 }
 
+// Se guarda en el archivo los datos de manera ordenada (Por el peso).
 void guardarArchivo(){
 	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
 	FILE *archivo=NULL;
@@ -236,6 +228,7 @@ void guardarArchivo(){
 	fclose(archivo);
 }
 
+// Se ocupa para que algunos mensajes no desaparezcan.
 void presioneEnterParaContinuar(){
 	printf("\nPresione Enter para continuar...\n");
 	getchar();
