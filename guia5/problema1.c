@@ -48,6 +48,7 @@ void liberarJugadores(Jugador* jugadores);
 Equipo* crearEquipos(int numEquipos);
 void liberarEquipos(Equipo* equipos, int numEquipos);
 char* generarNombre(char *nombre, int seedN, int seedA);
+void ordenarDB(Equipo* equipo);
 
 char rNombres[30][15]={"Pedro", "Antonio", "Angela", "Maria", "Jose", "Miguel", "Paula", "Catalina", "Mario", "Andres", 
 				"Valentina", "Josefa", "Alexis", "Hugo", "Paola", "Angelica", "Rodrigo", "Ignacio", "Fernanda", "Camila",
@@ -66,6 +67,8 @@ int main(){
 	for(i=0;i<40;++i){
 		printf("%s %d %lf\n",(v+i)->nombre, (v+i)->edad,(v+i)->agresividad);
 	}
+	char a[2][7]={"hola", "chao"};
+	printf("%s %s\n", a[0], a[1]);
 	return 0;
 }
 
@@ -132,35 +135,35 @@ void liberarStaff(Staff* staff){
 
 Jugador* crearJugadores(int numArq, int numDef, int numCent, int numDel){
 	int i, total=numArq+numDef+numCent+numDel;
-	Jugador *jogadores=(Jugador*)malloc(total*sizeof(Jugador));
+	Jugador *jugadores=(Jugador*)malloc(total*sizeof(Jugador));
 	srand(time(NULL));
 	char nombre[100];
 	for(i=0;i<total;++i){
 		if(numArq){
-			strcpy((jogadores+i)->posicion, "Arquero");
+			strcpy((jugadores+i)->posicion, "Arquero");
 			--numArq;
 		}
 		else if(numDef){
-			strcpy((jogadores+i)->posicion, "Defensa");
+			strcpy((jugadores+i)->posicion, "Defensa");
 			--numDef;
 		}
 		else if(numCent){
-			strcpy((jogadores+i)->posicion, "Medio");
+			strcpy((jugadores+i)->posicion, "Medio");
 			--numCent;
 		}
 		else if(numDel){
-			strcpy((jogadores+i)->posicion, "Delantero");
+			strcpy((jugadores+i)->posicion, "Delantero");
 			--numDel;
 		}
 		generarNombre(nombre, rand()%30, rand()%30);
-		strcpy((jogadores+i)->nombre, nombre);
-		(jogadores+i)->edad=rand()%13+18;
-		(jogadores+i)->regate=(double)rand()/10000;
-		(jogadores+i)->defensa=(double)rand()/10000;
-		(jogadores+i)->reflejos=(double)rand()/10000;
-		(jogadores+i)->velocidad=(double)rand()/10000;
-		(jogadores+i)->dureza=(double)rand()/10000;
-		(jogadores+i)->resistencia=(double)rand()/10000;
+		strcpy((jugadores+i)->nombre, nombre);
+		(jugadores+i)->edad=rand()%13+18;
+		(jugadores+i)->regate=(double)rand()/10000;
+		(jugadores+i)->defensa=(double)rand()/10000;
+		(jugadores+i)->reflejos=(double)rand()/10000;
+		(jugadores+i)->velocidad=(double)rand()/10000;
+		(jugadores+i)->dureza=(double)rand()/10000;
+		(jugadores+i)->resistencia=(double)rand()/10000;
 	}
 	return jugadores;
 }
@@ -174,7 +177,7 @@ Equipo* crearEquipos(int numEquipos){
 	int i;
 	srand(time(NULL));
 	for(i=0;i<numEquipos;++i){
-		strcpy((equipos+i)->, rNombreEquipos[rand()%19]);
+		strcpy((equipos+i)->nombre, rNombreEquipos[rand()%19]);
 		(equipos+i)->anyoFundacion=1800+rand()%219;
 	}
 	return equipos;
@@ -190,4 +193,32 @@ char* generarNombre(char *nombre, int seedN, int seedA){
 	strcat(nombre, space);
 	strcat(nombre, rApellidos[seedA]);
 	return nombre;
+}
+
+void ordenarDB(Equipo* equipo){
+	int i, j, k, pos, total=0;
+	Staff tempS;
+	char StaffRoles[6][25]={"DT", "Preparador Arqueros", "Preparador Fisico", "Asistente", "Fisioterapeuta", "Doctor"};
+	for(i=0, pos=0;i<6;++i){
+		for(j=pos;j<equipo->numStaff[i];++j){
+			if(!strcmp((equipo->staff+pos+j)->rol, StaffRoles[i])){
+				tempS=*(equipo->staff+pos+j);
+				*(equipo->staff+pos+j)=*(equipo->staff+pos);
+				*(equipo->staff+pos)=tempS;
+				++pos;
+			}
+		}
+		for(k=pos-equipo->numStaff[i];k<pos-1;++k){
+			for(j=k+1;j<equipo->numStaff[i];++j){
+				char t=strcmp(equipo->((staff+k)->nombre), equipo->((staff+j)->nombre));
+				if(t>0){
+					tempS=equipo->(staff+j);
+					equipo->(staff+j)=equipo->(staff+k);
+					equipo->(staff+k)=tempS;
+				}
+			}
+		}
+		total+=equipo->numStaff[i];
+	}
+	
 }

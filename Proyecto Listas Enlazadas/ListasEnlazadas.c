@@ -3,15 +3,11 @@
 
 // Falta:	-Poner que se libere las memorias de los punteros de la lista.
 //			-Liberar la memoria de los punteros temporales de las funciones.
-//			-Una funcion para eliminar un peleador de la lista.
 // 			-Que se vea mas bonito cuando se despliegue la lista.
-//			-Alguna funcion para editar la informacion de un elemento especifico de la lista
-//			(Podria hacerse con algo como ID temporales o algo para identificar los peleadores, 
-//			ya que por el nombre no es muy conveniente).
 //			-En la funciones de desplegar por categoria de peso y por estilos, yo creo que solo
 //			hay que agregar unos cuantos if. Se podrian hacer funciones nuevas o se podria modificar
 //			la funcion actual para desplegar la lista.
-// 			-Revisar la funcion para agregar elementos, ya que tiene pinta de que algo puede tener malo.
+//			-Validar entrada para los estilos.
 
 struct peleador{
 	char nombre[200];
@@ -39,6 +35,8 @@ void agregar(struct peleador pel);
 void desplegarLista();
 void leerArchivo();
 void guardarArchivo();
+void eliminar(int id);
+void modificar(int id);
 void presioneEnterParaContinuar();
 
 int main(){
@@ -52,7 +50,7 @@ int main(){
 			"[3] Desplegar toda la lista.\n"
 			"[4] Desplegar por categoria de peso.\n"
 			"[5] Desplegar por estilos.\n"
-			"[6] Editar informacion de estilos.\n"
+			"[6] Editar informacion de peleadores.\n"
 			"[7] Salir.\n");
 		scanf("%d", &user);
 		while(user>7 && user<1){ // Validamos la entrada.
@@ -63,7 +61,7 @@ int main(){
 				"[3] Desplegar toda la lista.\n"
 				"[4] Desplegar por categoria de peso.\n"
 				"[5] Desplegar por estilos.\n"
-				"[6] Editar informacion de estilos.\n"
+				"[6] Editar informacion de peleadores.\n"
 				"[7] Salir.\n");
 			scanf("%d", &user);
 		}
@@ -71,30 +69,49 @@ int main(){
 			getchar();
 			struct peleador pel;
 			system("clear");
-			printf("Nombre del peleador?\n");
+			printf("Nombre del peleador:\n");
 			scanf("%[^\n]", pel.nombre);
 			system("clear");
-			printf("Edad?\n");
+			printf("Edad:\n");
 			scanf("%d", &pel.edad);
 			system("clear");
-			printf("Peso?\n");
+			printf("Peso:\n");
 			scanf("%lf", &pel.peso);
 			system("clear");
-			printf("Estatura?\n");
+			printf("Estatura:\n");
 			scanf("%lf", &pel.estatura);
 			system("clear");
-			printf("Estilo?\n[1] Boxeo.\n[2] Kick Boxing.\n[3] MMA.\n");
+			printf("Estilo:\n[1] Boxeo.\n[2] Kick Boxing.\n[3] MMA.\n");
 			scanf("%d", &pel.estilo);
 			system("clear");
-			printf("Peleas ganadas?\n");
+			printf("Peleas ganadas:\n");
 			scanf("%d", &pel.ganadas);
 			system("clear");
-			printf("Peleas perdidas?\n");
+			printf("Peleas perdidas:\n");
 			scanf("%d", &pel.perdidas);
 			agregar(pel);
 		}
 		else if(user==2){
-			
+			system("clear");
+			if(largo()==0){
+				printf("No existen peleadores.\n");
+				presioneEnterParaContinuar();
+				continue;
+			}
+			desplegarLista();
+			printf("\nIngrese ID a eliminar o [0] para volver al menu:\n");
+			int ID;
+			scanf("%d", &ID);
+			while(ID<0 || largo()<ID){
+				printf("Entrada invalida, ingrese nuevamente:\n");
+				scanf("%d", &ID);
+			}
+			if(ID==0){
+				continue;
+			}
+			eliminar(ID);
+			printf("Eliminado\n");
+			presioneEnterParaContinuar();
 		}
 		else if(user==3){ // Simplemente llamamos las funciones correspondientes.
 			system("clear");
@@ -108,7 +125,27 @@ int main(){
 			
 		}
 		else if(user==6){
-			
+			system("clear");
+			if(largo()==0){
+				printf("No existen peleadores.\n");
+				presioneEnterParaContinuar();
+				continue;
+			}
+			desplegarLista();
+			printf("\nIngrese ID a modificar o [0] para volver al menu:\n");
+			int ID;
+			scanf("%d", &ID);
+			while(ID<0 || largo()<ID){
+				printf("Entrada invalida, ingrese nuevamente:\n");
+				scanf("%d", &ID);
+			}
+			if(ID==0){
+				continue;
+			}
+			modificar(ID);
+			system("clear");
+			printf("Datos modificados\n");
+			presioneEnterParaContinuar();
 		}
 		else if(user==7){ // Salimos del while para dejar de desplegar el menu.
 			system("clear");
@@ -141,7 +178,6 @@ void agregar(struct peleador pel){
 		printf("ERROR al reservar memoria, intente denuevo.\n");
 	}
 	current=head;
-	printf("SEP\n");
 	while(current!=NULL){
 		if(current->peleador.peso>pel.peso){
 			break;
@@ -169,16 +205,16 @@ void desplegarLista(){
 	current=head;
 	int i=1;
 	while(current!=NULL){
-		printf("%d %s\t%d\t%.2lf\t%.2lf\t", i, current->peleador.nombre, current->peleador.edad, current->peleador.peso,
+		printf("%3d %20s %d\t%.2lf\t%.2lf\t", i, current->peleador.nombre, current->peleador.edad, current->peleador.peso,
 			current->peleador.estatura);
 		if(current->peleador.estilo==1){
-			printf("Boxeo\t");
+			printf("Boxeo       ");
 		}
 		else if(current->peleador.estilo==2){
-			printf("Kick Boxing\t");
+			printf("Kick Boxing ");
 		}
 		else if(current->peleador.estilo==3){
-			printf("MMA\t");
+			printf("MMA         ");
 		}
 		printf("%d\t%d\n", current->peleador.ganadas, current->peleador.perdidas);
 		current=current->next;
@@ -190,7 +226,9 @@ void desplegarLista(){
 void leerArchivo(){
 	FILE *archivo=NULL;
 	archivo=fopen("datos.txt", "r");
+	printf("hola\n");
 	if(archivo!=NULL){
+		printf("chao\n");
 		int num;
 		char saltoDeLinea;
 		struct peleador pel;
@@ -205,8 +243,8 @@ void leerArchivo(){
 				&pel.ganadas, &pel.perdidas);
 			agregar(pel);
 		}
+		fclose(archivo);
 	}
-	fclose(archivo);
 }
 
 // Se guarda en el archivo los datos de manera ordenada (Por el peso).
@@ -226,6 +264,113 @@ void guardarArchivo(){
 		current=current->next;
 	}
 	fclose(archivo);
+}
+
+// Elimina un peleador especifico de la lista desplegada (Por ID).
+void eliminar(int id){
+	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
+	struct nodo *prev=(struct nodo*)malloc(sizeof(struct nodo));
+	current=head;
+	--id;
+	while(current!=NULL && id){
+		prev=current;
+		current=current->next;
+		--id;
+	}
+	if(current==head){
+		head=head->next;
+		free(current);
+	}
+	prev->next=current->next;
+}
+
+void modificar(int id){
+	int ID=id;
+	struct nodo *current=(struct nodo*)malloc(sizeof(struct nodo));
+	int entrada;
+	current=head;
+	--id;
+	while(current!=NULL && id){
+		current=current->next;
+		--id;
+	}
+	system("clear");
+	printf("%3d %20s %d\t%.2lf\t%.2lf\t", ID, current->peleador.nombre, current->peleador.edad, current->peleador.peso,
+			current->peleador.estatura);
+		if(current->peleador.estilo==1){
+			printf("Boxeo       ");
+		}
+		else if(current->peleador.estilo==2){
+			printf("Kick Boxing ");
+		}
+		else if(current->peleador.estilo==3){
+			printf("MMA         ");
+		}
+		printf("%d\t%d\n\n", current->peleador.ganadas, current->peleador.perdidas);
+	printf("Que desea modificar:\n"
+			"[1] Nombre.\n"
+			"[2] Edad\n"
+			"[3] Peso.\n"
+			"[4] Estatura.\n"
+			"[5] Estilo.\n"
+			"[6] Peleas ganadas.\n"
+			"[7] Peleas perdidas.\n"
+			"[0] Volver al menu\n");
+	scanf("%d", &entrada);
+	while(entrada>7 || entrada<0){
+		printf("Entrada invalida, ingrese nuevamente:\n");
+		scanf("%d", &entrada);
+	}
+	getchar();
+	fflush(stdin);
+	system("clear");
+	if(entrada==0){
+		return;
+	}
+	if(entrada==1){
+		printf("Nombre anterior: %s\nIngrese nuevo nombre:\n", current->peleador.nombre);
+		scanf("%[^\n]", current->peleador.nombre);
+	}
+	else if(entrada==2){
+		printf("Edad anterior: %d\nIngrese nueva edad:\n", current->peleador.edad);
+		scanf("%d", &(current->peleador.edad));
+	}
+	else if(entrada==3){
+		printf("Peso anterior: %lf\nIngrese nuevo peso:\n", current->peleador.peso);
+		scanf("%lf", &(current->peleador.peso));
+	}
+	else if(entrada==4){
+		printf("Estatura anterior: %lf\nIngrese nueva estatura.\n", current->peleador.estatura);
+		scanf("%lf", &(current->peleador.estatura));
+	}
+	else if(entrada==5){
+		printf("Estilo anterior: ");
+		if(current->peleador.estilo==1){
+			printf("Boxeo\n");
+		}
+		else if(current->peleador.estilo==2){
+			printf("Kick Boxing\n");
+		}
+		else if(current->peleador.estilo==3){
+			printf("MMA\n");
+		}
+		int temp;
+		printf("Ingrese nuevo estilo:\n[1] Boxeo.\n[2] Kick Boxing.\n[3] MMA.\n");
+		scanf("%d", &temp);
+		while(temp>3 || temp<1){
+			printf("Entrada invalida, ingrese nuevamente:\n");
+			scanf("%d", &temp);
+		}
+		current->peleador.estilo=temp;
+	}
+	else if(entrada==6){
+		printf("Peleas ganadas: %d\nIngrese nueva cantidad.\n", current->peleador.ganadas);
+		scanf("%d", &(current->peleador.ganadas));
+	}
+	else if(entrada==7){
+		printf("Peleas perdidas: %d\nIngrese nueva cantidad.\n", current->peleador.perdidas);
+		scanf("%d", &(current->peleador.perdidas));
+	}
 }
 
 // Se ocupa para que algunos mensajes no desaparezcan.
