@@ -42,6 +42,7 @@ int main(){
 	// 	Leemos el archivo, agregando los datos manteniendo el orden, es decir, se pueden
 	// leer datos de manera desordenada, y se agregaran de manera que la lista este ordenada.
 
+	system("clear");
 	leerArchivo();
 
 	// 	Este while es para que se siga desplegando el menu despues de realizar una accion.
@@ -171,8 +172,9 @@ int main(){
 				int PESO;
 				scanf("%d", &PESO);
 				while(PESO<1 || PESO>5){
+					getchar();
 					system("clear");
-					printf("Entrada invalida.\nIngrese categoria de peso:\n[1] Peso ligero.\n[2] Peso welter.\n [3] Peso medio.\n [4] Peso semipesado.\n [5] Peso pesado.\n\n");
+					printf("Entrada invalida.\n\nIngrese categoria de peso:\n[1] Peso ligero.\n[2] Peso welter.\n[3] Peso medio.\n[4] Peso semipesado.\n[5] Peso pesado.\n");
 					scanf("%d", &PESO);
 				}
 				system("clear");
@@ -195,8 +197,9 @@ int main(){
 				int ID;
 				scanf("%d", &ID);
 				while(ID<1 || ID>3){
+					getchar();
 					system("clear");
-					printf("Entrada invalida.\nIngrese el estilo a desplegar:\n[1] Boxeo.\n[2] Kick Boxing.\n[3] MMA.\n");
+					printf("Entrada invalida.\n\nIngrese el estilo a desplegar:\n[1] Boxeo.\n[2] Kick Boxing.\n[3] MMA.\n");
 					scanf("%d", &ID);
 				}
 				system("clear");
@@ -420,7 +423,6 @@ void leerArchivo(){
 	archivo=fopen("datos.txt", "r");
 	printf("Leyendo archivo...\n");
 	if(archivo!=NULL){
-		printf("chao\n");
 		int num;
 		char saltoDeLinea;
 		struct peleador pel;
