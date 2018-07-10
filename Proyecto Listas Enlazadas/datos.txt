@@ -1,7 +1,21 @@
-3
-awe
-1.00 2 2.00 2 1 2
-sadasdasdasdasdasddadasdassadasdasdsadsa
-2.00 2 2.00 2 2 2
-Gearless Joe
-81.00 10 1.30 1 10 2
+10
+Matias Alfaro
+62.50 22 1.76 2 4 4
+Jose Carrasco
+63.70 26 1.78 3 5 2
+Renato Perez
+72.12 19 1.61 3 2 3
+Marcelo Guzman
+72.80 20 1.82 3 3 2
+Gonzalo Rojas
+77.12 24 1.81 1 2 5
+Ignacio Arancibia
+81.20 25 1.62 1 5 2
+Diego Silva
+86.11 26 1.62 2 0 2
+Luis Medina
+92.99 26 1.56 1 2 5
+Benjamin Diaz
+94.12 25 1.85 3 3 2
+Juan Lopez
+94.12 28 1.92 2 1 0
