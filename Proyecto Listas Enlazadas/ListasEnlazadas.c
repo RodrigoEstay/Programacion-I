@@ -66,7 +66,8 @@ int main(){
 		scanf("%d", &user);
 		while(user>7 && user<1){ // Validamos la entrada.
 			system("clear");
-			printf("Opcion invalida, vuelva a seleccionar:\n"
+			printf("Entrada invalida.\n"
+				"Seleccione la operacion a realizar:\n"
 				"[1] Agregar peleador.\n"
 				"[2] Eliminar peleador.\n"
 				"[3] Desplegar toda la lista.\n"
@@ -168,13 +169,15 @@ int main(){
 				printf("No existen peleadores...\n");
 			}
 			else{
-				printf("Ingrese categoria de peso:\n[1] Peso ligero.\n[2] Peso welter.\n[3] Peso medio.\n[4] Peso semipesado.\n[5] Peso pesado.\n");
+				printf("Ingrese categoria de peso:\n[1] Peso ligero.\n[2] Peso welter.\n[3] Peso medio.\n"
+					"[4] Peso semipesado.\n[5] Peso pesado.\n");
 				int PESO;
 				scanf("%d", &PESO);
 				while(PESO<1 || PESO>5){
 					getchar();
 					system("clear");
-					printf("Entrada invalida.\n\nIngrese categoria de peso:\n[1] Peso ligero.\n[2] Peso welter.\n[3] Peso medio.\n[4] Peso semipesado.\n[5] Peso pesado.\n");
+					printf("Entrada invalida.\n\nIngrese categoria de peso:\n[1] Peso ligero.\n[2] Peso welter.\n"
+						"[3] Peso medio.\n[4] Peso semipesado.\n[5] Peso pesado.\n");
 					scanf("%d", &PESO);
 				}
 				system("clear");
