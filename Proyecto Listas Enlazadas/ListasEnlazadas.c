@@ -124,7 +124,7 @@ int main(){
 		else if(user==2){
 			system("clear");
 			if(largo()==0){
-				printf("No existen peleadores.\n");
+				printf("No existen peleadores...\n");
 				presioneEnterParaContinuar();
 				continue;
 			}
@@ -152,6 +152,8 @@ int main(){
 			system("clear");
 			if(!largo()){
 				printf("No existen peleadores...\n");
+				presioneEnterParaContinuar();
+				continue;
 			}
 			else{
 				desplegarLista();
@@ -167,6 +169,8 @@ int main(){
 			system("clear");
 			if(!largo()){
 				printf("No existen peleadores...\n");
+				presioneEnterParaContinuar();
+				continue;
 			}
 			else{
 				printf("Ingrese categoria de peso:\n[1] Peso ligero.\n[2] Peso welter.\n[3] Peso medio.\n"
@@ -194,6 +198,8 @@ int main(){
 			system("clear");
 			if(!largo()){
 				printf("No existen peleadores...\n");
+				presioneEnterParaContinuar();
+				continue;
 			}
 			else{
 				printf("Ingrese el estilo a desplegar:\n[1] Boxeo.\n[2] Kick Boxing.\n[3] MMA.\n");
@@ -218,7 +224,7 @@ int main(){
 		else if(user==6){
 			system("clear");
 			if(!largo()){
-				printf("No existen peleadores.\n");
+				printf("No existen peleadores...\n");
 				presioneEnterParaContinuar();
 				continue;
 			}
